@@ -1161,7 +1161,6 @@ jsPsych.data = (function() {
       } else {
         throw new Error('Invalid format specified for localSave. Must be "JSON" or "CSV".');
       }
-	window.alert(data_string);	
       saveTextToFile(data_string, filename);
     }
 
