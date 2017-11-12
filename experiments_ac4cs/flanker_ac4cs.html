@@ -126,8 +126,10 @@
             timeline: timeline,
             on_finish: function() {
                 jsPsych.data.displayData('csv'); 
-                jsPsych.data.get().localSave('flanker.csv', 'csv');
-                saveData("flanker.csv", jsPsych.data.get().csv());
+                //jsPsych.data.get().localSave('flanker.csv', 'csv');
+                var rawdata_string = jsPsych.data.get().csv();
+                console.log(rawdata_string);
+                saveData("flanker.csv", rawdata_string);
             }
         });
         
