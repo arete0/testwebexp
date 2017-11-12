@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../jspsych.js"></script>
+    <script src="../plugins/jspsych-html-button-response.js"></script>
+    <script src="../plugins/jspsych-html-keyboard-response.js"></script>
+    <link rel="stylesheet" href="../css/jspsych.css"></link>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      img { width: 300px; }
+    </style>
+  </head>
+  <body></body>
+  <script>
+  var timeline = [];
+
+  timeline.push({
+    type: 'html-button-response',
+    stimulus: '<p style="color: green; font-size: 48px; font-weight: bold;">녹색</p>',
+    choices: ['녹색', '파랑', '빨강'],
+    prompt: "<p>단어의 색은 무엇인가요?</p>"
+  });
+
+  timeline.push({
+    type: 'html-button-response',
+    stimulus: '<p style="color: green; font-size: 48px; font-weight: bold;">파랑</p>',
+    choices: ['녹색', '파랑', '빨강'],
+    prompt: "<p>단어의 색은 무엇인가요?</p>"
+  });
+
+  timeline.push({
+    type: 'html-button-response',
+    stimulus: '<p style="color: green; font-size: 48px; font-weight: bold;">빨강</p>',
+    choices: ['녹색', '파랑', '빨강'],
+    prompt: "<p>단어의 색은 무엇인가요?</p>"
+  });
+
+
+  timeline.push({
+    type: 'html-button-response',
+    stimulus: '<p style="color: blue; font-size: 48px; font-weight: bold;">녹색</p>',
+    choices: ['녹색', '파랑', '빨강'],
+    prompt: "<p>단어의 색은 무엇인가요?</p>"
+  });
+
+  timeline.push({
+    type: 'html-button-response',
+    stimulus: '<p style="color: blue; font-size: 48px; font-weight: bold;">파랑</p>',
+    choices: ['녹색', '파랑', '빨강'],
+    prompt: "<p>단어의 색은 무엇인가요?</p>"
+  });
+
+  timeline.push({
+    type: 'html-button-response',
+    stimulus: '<p style="color: blue; font-size: 48px; font-weight: bold;">빨강</p>',
+    choices: ['녹색', '파랑', '빨강'],
+    prompt: "<p>단어의 색은 무엇인가요?</p>"
+  });
+
+
+  timeline.push({
+    type: 'html-button-response',
+    stimulus: '<p style="color: red; font-size: 48px; font-weight: bold;">녹색</p>',
+    choices: ['녹색', '파랑', '빨강'],
+    prompt: "<p>단어의 색은 무엇인가요?</p>"
+  });
+
+  timeline.push({
+    type: 'html-button-response',
+    stimulus: '<p style="color: red; font-size: 48px; font-weight: bold;">파랑</p>',
+    choices: ['녹색', '파랑', '빨강'],
+    prompt: "<p>단어의 색은 무엇인가요?</p>"
+  });
+
+  timeline.push({
+    type: 'html-button-response',
+    stimulus: '<p style="color: red; font-size: 48px; font-weight: bold;">빨강</p>',
+    choices: ['녹색', '파랑', '빨강'],
+    prompt: "<p>단어의 색은 무엇인가요?</p>"
+  });
+
+  var shuffledtimeline = jsPsych.randomization.repeat(timeline, 1);
+
+  jsPsych.init({
+    timeline: shuffledtimeline,
+    on_finish: function(){jsPsych.data.displayData('csv');}
+  });
+
+
+  </script>
+</html>
