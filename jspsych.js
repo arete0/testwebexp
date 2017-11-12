@@ -1421,7 +1421,6 @@ jsPsych.data = (function() {
       type: 'text/plain'
     });
     var blobURL = "";
-    console.log(textstr);
     if (typeof window.webkitURL !== 'undefined') {
       blobURL = window.webkitURL.createObjectURL(blobToSave);
     } else {
