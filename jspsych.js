@@ -1161,6 +1161,7 @@ jsPsych.data = (function() {
       } else {
         throw new Error('Invalid format specified for localSave. Must be "JSON" or "CSV".');
       }
+      
       saveTextToFile(data_string, filename);
     }
 
@@ -1420,6 +1421,7 @@ jsPsych.data = (function() {
       type: 'text/plain'
     });
     var blobURL = "";
+    console.log('textstr');
     if (typeof window.webkitURL !== 'undefined') {
       blobURL = window.webkitURL.createObjectURL(blobToSave);
     } else {
