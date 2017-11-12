@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../jspsych.js"></script>
+    <script src="../plugins/jspsych-survey-multi-choice.js"></script>
+    <script src="../plugins/jspsych-survey-text.js"></script>
+    <link rel="stylesheet" href="../css/jspsych.css"></link>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body></body>
+  <script>
+
+  // definiting two different response scales that can be used.
+  var gender_options = ["남자", "여자"];
+  var page_1_options = ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"];
+  var page_2_options = ["Strongly Disagree", "Disagree", "Somewhat Disagree", "Neural", "Somewhat Agree", "Agree", "Strongly Agree"];
+
+  var multi_choice_block = {
+      type: 'survey-multi-choice',
+      questions: [{prompt: "당신의 성별은 무엇입니까?", options: gender_options, required:true}],
+  };
+
+  var survey_block = {
+      type: 'survey-text',
+      questions: [{prompt: '출생연도는?',
+               value: '연도', rows: 1, columns: 50}],
+  };
+
+
+  jsPsych.init({
+    timeline: [multi_choice_block, survey_block],
+    on_finish: function() {
+      jsPsych.data.displayData();
+    }
+  });
+
+
+  </script>
+</html>
