@@ -1430,16 +1430,8 @@ jsPsych.data = (function() {
 
     var display_element = jsPsych.getDisplayElement();
 
-    display_element.append($('<a>', {
-      id: 'jspsych-download-as-text-link',
-      href: blobURL,
-      css: {
-        display: 'none'
-      },
-      download: filename,
-      html: 'download file'
-    }));
-    $('#jspsych-download-as-text-link')[0].click();
+    display_element.insertAdjacentHTML('beforeend','<a id="jspsych-download-as-text-link" style="display:none;" download="'+filename+'" href="'+blobURL+'">click to download</a>');
+    document.getElementById('jspsych-download-as-text-link').click();
   }
 
   //
