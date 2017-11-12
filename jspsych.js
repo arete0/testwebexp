@@ -1151,7 +1151,7 @@ jsPsych.data = (function() {
       return JSON.stringify(trials);
     }
 
-    data_collection.localSave = function(format, filename){
+    data_collection.localSave = function(filename, format){
       var data_string;
 
       if (format == 'JSON' || format == 'json') {
