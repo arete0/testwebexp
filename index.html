@@ -25,7 +25,11 @@
   <script>
     if(document.getElementById('start').clicked == true)
     {
-        document.writeln('<button type="button" id="start" class='jspsych-btn' onclick="location.href='experiments_ac4cs/flanker_ac4cs.html'">실험시작</button>');
+      document.writeln('<button type="button" id="start" class='jspsych-btn' onclick="location.href='experiments_ac4cs/flanker_ac4cs.html'">실험시작</button>');
+    }
+    else 
+    {
+      document.writeln('<button type="button" id="restart" class='jspsych-btn' onclick="history.back();'">실험시작</button>');
     }
   </script>
 </div>
