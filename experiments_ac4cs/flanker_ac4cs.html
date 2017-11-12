@@ -123,7 +123,7 @@
         /*start experiment*/
         jsPsych.init({
             timeline: timeline,
-            on_finish: function(data) {
+            on_finish: function() {
                 jsPsych.data.displayData('csv');
                 jsPsych.data.localSave('flanker.csv', 'csv');
             }
