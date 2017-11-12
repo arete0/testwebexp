@@ -127,7 +127,17 @@
             on_finish: function() {
                 jsPsych.data.displayData('csv'); 
                 jsPsych.data.get().localSave('flanker.csv', 'csv');
+                saveData("filename.csv", jsPsych.data.dataAsCSV())
             }
         });
+        
+        function saveData(filename, filedata){
+           $.ajax({
+              type:'post',
+              cache: false,
+              url: 'localhost://save_data.php', // this is the path to the above PHP script
+              data: {filename: filename, filedata: filedata}
+        });
+}
     </script>
 </html>
