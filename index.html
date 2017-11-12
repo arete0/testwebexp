@@ -6,10 +6,11 @@
 <style>
   .center {
     position: absolute;
-    top: 200px;
-    left: 200px;
+    height: 30%; 
+    width: 80%; 
+    top: 30%; 
+    left: 10%; 
     background-color: #e9f5ee;
-    width: 1000px;
   }
   p {
     font-size: 26px;
@@ -34,7 +35,7 @@
       urlString = 'history.back();'
     }
   </script>
-  <button type="button" id="start" class='jspsych-btn' onclick="location.href=urlStirng">실험시작</button>
+  <button type="button" id="start" class='jspsych-btn' onclick="location.href=' + urlStirng + '">실험시작</button>
 </div>
 </body>
 </html>
