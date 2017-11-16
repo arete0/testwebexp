@@ -1,0 +1,75 @@
+
+<!DOCTYPE html><html class=''>
+<head>
+    <meta charset='UTF-8'>
+    <meta name="robots" content="noindex">
+    <title>The Experiment Factory: Preview</title>
+
+<link rel='stylesheet' type='text/css' href='../static/css/jspsych.css'>
+<link rel='stylesheet' type='text/css' href='../static/css/default_style.css'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+
+<body>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+<script src='../static/js/math.min.js'></script>
+<script src='../static/js/jspsych/jspsych.js'></script>
+<script src='../static/js/jspsych/plugins/jspsych-text.js'></script>
+<script src='../static/js/jspsych/poldrack_plugins/jspsych-poldrack-text.js'></script>
+<script src='../static/js/jspsych/poldrack_plugins/jspsych-poldrack-instructions.js'></script>
+<script src='../static/js/jspsych/poldrack_plugins/jspsych-attention-check.js'></script>
+<script src='../static/js/jspsych/poldrack_plugins/jspsych-poldrack-single-stim.js'></script>
+<script src='../static/js/jspsych/poldrack_plugins/jspsych-poldrack-categorize.js'></script>
+<script src='../static/js/jspsych/plugins/jspsych-survey-text.js'></script>
+<script src='../static/js/utils/poldrack_utils.js'></script>
+<script src='experiment.js'></script>
+
+<script>
+$( document ).ready(function() {
+
+    expfactory_finished = false;
+
+    jsPsych.init({
+        timeline: stroop_experiment,
+        display_element: "getDisplayElement",
+        fullscreen: true,
+        on_trial_finish: function(data){
+        addID('stroop')
+    },
+    on_finish: function(data){
+        var info = getParticipantInfo();
+        jsPsych.data.displayData();
+        var filename = ['data', info.id, info.name, info.email, (new Date()).getTime()].join('-') + '.csv';
+        jsPsych.data.localSave(filename, 'csv');
+        var rawdata_string = jsPsych.data.dataAsCSV();
+        //console.log(rawdata_string);
+        saveData(filename, rawdata_string);
+        expfactory_finished = true;
+    }
+    });
+});
+    function saveData(filename, filedata){
+       $.ajax({
+          type:'post',
+          cache: false,
+          url: 'http://202.30.6.15/save_data.php', // this is the path to the above PHP script
+          data: {filename: filename, filedata: filedata}
+        });
+    }
+    function getParticipantInfo() {
+    return decodeURI(location.search) // decode query parameters
+      .substring(1) // remove '?'
+      .split('&') // split parameters
+      .map(function (token) {
+        return token.split('='); // split key and value
+      })
+      .reduce(function (out, item) {
+        if (item[0].length == 0) return out;
+        out[item[0]] = item[1];
+        return out;
+      }, {}); // collect into an object
+    }
+</script>
+</body>
+</html>
